@@ -42,7 +42,8 @@ export default function SearchInterface() {
               mb: 3,
               "& .MuiOutlinedInput-root": {
                 color: "white",
-                backgroundColor: "rgba(255,255,255,0.05)",
+                backgroundColor: "rgba(255,255,255,0.1)",
+                borderRadius: 1,
                 "& fieldset": {
                   borderColor: "rgba(255,255,255,0.2)",
                 },
@@ -50,13 +51,13 @@ export default function SearchInterface() {
                   borderColor: "rgba(255,255,255,0.3)",
                 },
                 "&.Mui-focused fieldset": {
-                  borderColor: "#00ff00",
+                  borderColor: "#15ab33",
                 },
               },
             }}
             InputProps={{
               endAdornment: (
-                <IconButton sx={{ color: "#00ff00" }}>
+                <IconButton sx={{ color: "#15ab33" }}>
                   <SearchIcon />
                 </IconButton>
               ),
@@ -73,13 +74,16 @@ export default function SearchInterface() {
                 key={result.id}
                 sx={{
                   mb: 1,
-                  backgroundColor: "rgba(255,255,255,0.05)",
+                  backgroundColor: "rgba(255,255,255,0.1)",
                   borderRadius: 1,
+                  "&:hover": {
+                    backgroundColor: "rgba(255,255,255,0.2)",
+                  },
                 }}
               >
                 <ListItemText primary={result.name} />
                 <ListItemSecondaryAction>
-                  <IconButton size="small" sx={{ color: "white", mr: 1 }}>
+                  <IconButton size="small" sx={{ color: "#15ab33", mr: 1 }}>
                     <CloseIcon />
                   </IconButton>
                   <IconButton size="small" sx={{ color: "#0077b5" }}>

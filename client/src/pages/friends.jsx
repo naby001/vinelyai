@@ -37,22 +37,24 @@ const InviteTextField = styled(TextField)(({ theme }) => ({
       borderColor: "rgba(255,255,255,0.3)",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#00ff00",
+      borderColor: "#15ab33",
     },
+  },
+  "& .MuiInputBase-input": {
+    color: "white",
   },
 }))
 
 export default function FriendsInterface() {
   const [currentFriends] = useState([
-    { id: 1, name: "Saptarshi Sinha", avatar: "/placeholder.svg?height=40&width=40" },
-    { id: 2, name: "Mridul Das", avatar: "/placeholder.svg?height=40&width=40" },
+    { id: 1, name: "Saptarshi Sinha", avatar: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=40&w=40" },
+    { id: 2, name: "Mridul Das", avatar: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=40&w=40" },
   ])
 
   const [suggestedFriends] = useState([
-    { id: 3, name: "Michael Schumacher", avatar: "/placeholder.svg?height=40&width=40" },
-    { id: 4, name: "Nasrin", avatar: "/placeholder.svg?height=40&width=40" },
-    { id: 5, name: "Jaswinder Singh", avatar: "/placeholder.svg?height=40&width=40" },
-   
+    { id: 3, name: "Michael Schumacher", avatar: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=40&w=40" },
+    { id: 4, name: "Nasrin", avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=40&w=40" },
+    { id: 5, name: "Jaswinder Singh", avatar: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=40&w=40" },
   ])
 
   return (
@@ -77,9 +79,9 @@ export default function FriendsInterface() {
             <InviteTextField fullWidth variant="outlined" placeholder="Enter email address or name" size="small" />
             <IconButton
               sx={{
-                backgroundColor: "#00ff00",
+                backgroundColor: "#15ab33",
                 color: "black",
-                "&:hover": { backgroundColor: "#00dd00" },
+                "&:hover": { backgroundColor: "#13992e" },
               }}
             >
               <SendIcon />
@@ -95,6 +97,9 @@ export default function FriendsInterface() {
                 backgroundColor: "rgba(255,255,255,0.1)",
                 borderRadius: 1,
                 mb: 1,
+                "&:hover": {
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                },
               }}
             >
               <ListItemAvatar>
@@ -117,6 +122,9 @@ export default function FriendsInterface() {
                 backgroundColor: "rgba(255,255,255,0.1)",
                 borderRadius: 1,
                 mb: 1,
+                "&:hover": {
+                  backgroundColor: "rgba(255,255,255,0.2)",
+                },
               }}
             >
               <ListItemAvatar>
@@ -127,9 +135,9 @@ export default function FriendsInterface() {
                 <IconButton
                   size="small"
                   sx={{
-                    color: "#00ff00",
-                    border: "1px solid #00ff00",
-                    "&:hover": { backgroundColor: "rgba(0,255,0,0.1)" },
+                    color: "#15ab33",
+                    border: "1px solid #15ab33",
+                    "&:hover": { backgroundColor: "rgba(21,171,51,0.1)" },
                   }}
                 >
                   <PersonAddIcon />

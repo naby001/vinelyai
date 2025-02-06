@@ -19,32 +19,35 @@ import { LinkedIn, Close as CloseIcon, Menu as MenuIcon } from "@mui/icons-mater
 import SearchIcon from "@mui/icons-material/Search"
 import PeopleIcon from "@mui/icons-material/People"
 import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact"
-
+import logo from "../assets/comet.png"
 
 // Custom styled components
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
-    "& .MuiDrawer-paper": {
-      width: 240,
-      backgroundColor: "#1a1a1a",
-      color: "white",
-      borderRight: "1px solid rgba(255,255,255,0.1)",
-    },
-  }))
+  "& .MuiDrawer-paper": {
+    width: 240,
+    backgroundColor: "#1a1a1a",
+    color: "white",
+    borderRight: "1px solid rgba(255,255,255,0.1)",
+  },
+}))
 
 const Logo = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(2),
   gap: theme.spacing(1),
-  "& svg": {
-    color: "#00ff00",
-    fontSize: 32,
+  "& img": {
+    width: 40,
+    height: 40,
+  },
+  "&:hover": {
+    backgroundColor: "rgba(255,255,255,0.1)",
   },
 }))
 
 const drawerItems = [
   { text: "Search", icon: <SearchIcon />, link: "/search" },
-  { text: "Connections", icon: <ConnectWithoutContactIcon /> },
+  { text: "Connections", icon: <ConnectWithoutContactIcon />, link: "/connections" },
   { text: "Friends", icon: <PeopleIcon />, link: "/friends" },
 ]
 
@@ -65,7 +68,7 @@ export default function Navbar() {
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ position: "fixed", top: 16, left: 16, color: "white", backgroundColor: "black" }}
+          sx={{ position: "fixed", top: 16, left: 16, color: "white", backgroundColor: "black", "&:hover": { backgroundColor: "#15ab33" } }}
         >
           <MenuIcon />
         </IconButton>
@@ -76,9 +79,7 @@ export default function Navbar() {
         onClose={handleDrawerToggle}
       >
         <Logo>
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-          </svg>
+          <img src={logo} alt="ChainHive.ai Logo" />
           <Typography variant="h6" component="div">
             ChainHive.ai
           </Typography>
@@ -87,11 +88,11 @@ export default function Navbar() {
           {drawerItems.map((item) => (
             <ListItemButton
               key={item.text}
-              sx={{ color: "white" }}
+              sx={{ color: "white", "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" } }}
               component="a"
               href={item.link || "#"}
             >
-              <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ color: "white", minWidth: 40 }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           ))}
