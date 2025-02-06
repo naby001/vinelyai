@@ -8,6 +8,10 @@ import {useSelector} from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setLogout } from './state';
 import AuthPage from './pages/authPage';
+import SearchInterface from './pages/search';
+import FriendsInterface from './pages/friends';
+import ConnectionsInterface from './pages/connections';
+
 const App = () => {
   const theme = createTheme({
     overrides: {
@@ -37,6 +41,10 @@ const App = () => {
 
       <Routes>
       <Route path="/" element={<AuthPage/>} />
+      <Route path="/search" element={<SearchInterface />} />
+      <Route path="/friends" element={<FriendsInterface />} />
+      <Route path="/connections" element={<ConnectionsInterface />} />
+
       </Routes>
       </ThemeProvider>
   </BrowserRouter>
