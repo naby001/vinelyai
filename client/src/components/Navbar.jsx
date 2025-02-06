@@ -43,9 +43,9 @@ const Logo = styled(Box)(({ theme }) => ({
 }))
 
 const drawerItems = [
-  { text: "Search", icon: <SearchIcon /> },
+  { text: "Search", icon: <SearchIcon />, link: "/search" },
   { text: "Connections", icon: <ConnectWithoutContactIcon /> },
-  { text: "Friends", icon: <PeopleIcon /> },
+  { text: "Friends", icon: <PeopleIcon />, link: "/friends" },
 ]
 
 export default function Navbar() {
@@ -85,7 +85,12 @@ export default function Navbar() {
         </Logo>
         <List>
           {drawerItems.map((item) => (
-            <ListItemButton key={item.text} sx={{ color: "white" }}>
+            <ListItemButton
+              key={item.text}
+              sx={{ color: "white" }}
+              component="a"
+              href={item.link || "#"}
+            >
               <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>

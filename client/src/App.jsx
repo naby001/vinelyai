@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setLogout } from './state';
 import AuthPage from './pages/authPage';
 import SearchInterface from './pages/search';
+import FriendsInterface from './pages/friends';
 
 const App = () => {
   const theme = createTheme({
@@ -40,7 +41,8 @@ const App = () => {
       <Routes>
       <Route path="/" element={<AuthPage/>} />
       <Route path="/search" element={<SearchInterface />} />
-      
+      <Route path="/friends" element={<FriendsInterface />} />
+
       </Routes>
       </ThemeProvider>
   </BrowserRouter>
