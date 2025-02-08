@@ -14,16 +14,17 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   "&:hover": {
     backgroundColor: "rgba(255,255,255,0.2)",
   },
+  minWidth:400
 }));
 
 const ConnectionCard = ({ icon: Icon, title, color }) => (
-  <StyledPaper>
-    <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+  <StyledPaper >
+    <Box sx={{ display: "flex", alignItems: "center", gap: 2}}>
       <Icon sx={{ fontSize: 32, color }} />
       <Box sx={{ flexGrow: 1 }}>
         <Typography
           variant="body2"
-          sx={{ color: "rgba(255,255,255,0.8)", mb: 1 }}
+          sx={{ color: "rgba(255,255,255,0.8)", mb: 1, display:'flex', alignItems:'flex' }}
         >
           {title}
         </Typography>
@@ -32,11 +33,12 @@ const ConnectionCard = ({ icon: Icon, title, color }) => (
     <Button
       variant="outlined"
       sx={{
-        color: "#15ab33",
+        color: "white",
         borderColor: "#15ab33",
+        backgroundColor: "#15ab33",
         "&:hover": {
           borderColor: "#13992e",
-          backgroundColor: "rgba(21,171,51,0.2)",
+          backgroundColor: "#15ab33",
         },
         "&:focus": {
           borderColor: "#15ab33",
@@ -61,13 +63,13 @@ export default function ConnectionsInterface() {
       }}
     >
       <Navbar />
-      <Box sx={{ flexGrow: 1, p: 3, pt: 8, margin: "0 auto", maxWidth: 800 }}>
-        <Typography variant="h5" sx={{ mb: 1 }}>
+      <Box sx={{ flexGrow: 1, p: 3, pt: 8, margin: "0 auto", maxWidth: 900 }}>
+        <Typography variant="h5" sx={{ mb: 1, fontSize:30 }}>
           Connections
         </Typography>
         <Typography
           variant="body2"
-          sx={{ mb: 1, color: "rgba(255,255,255,0.8)" }}
+          sx={{ mb: 1, color: "rgba(255,255,255,0.8)", fontSize:20 }}
         >
           Make your network searchable to you, your friends, and groups
           you&apos;re in. We never share, sell, or use your data to train AI
@@ -75,11 +77,11 @@ export default function ConnectionsInterface() {
         </Typography>
         <Typography
           variant="body2"
-          sx={{ mb: 4, color: "rgba(255,255,255,0.8)" }}
+          sx={{ mb: 4, color: "rgba(255,255,255,0.8)", fontSize:20 }}
         >
           Processing typically takes a couple hours.
         </Typography>
-        <Box sx={{ maxWidth: 400 }}>
+        <Box sx={{ maxWidth: 400, display:'flex', flexDirection:'row', gap:5 }}>
           <ConnectionCard
             icon={LinkedIn}
             title="Import a list of your LinkedIn connections"

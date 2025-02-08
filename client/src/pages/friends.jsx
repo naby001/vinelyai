@@ -69,7 +69,7 @@ export default function FriendsInterface() {
         </Typography>
 
         <StyledPaper>
-          <Typography variant="h6" sx={{ mb: 2 }}>
+          <Typography variant="h6" sx={{ mb: 2, color:'white' }}>
             Invite Friends
           </Typography>
           <Typography variant="body2" sx={{ mb: 2, color: "rgba(255,255,255,0.7)" }}>

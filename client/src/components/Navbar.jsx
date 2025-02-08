@@ -13,6 +13,7 @@ import {
   ListItemIcon,
   useMediaQuery,
   useTheme,
+  Avatar,
 } from "@mui/material"
 import { styled } from "@mui/material/styles"
 import { LinkedIn, Close as CloseIcon, Menu as MenuIcon } from "@mui/icons-material"
@@ -55,9 +56,14 @@ export default function Navbar() {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [selectedTab, setSelectedTab] = useState('') // Track the selected tab
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen)
+  }
+
+  const handleTabClick = (tab) => {
+    setSelectedTab(tab)
   }
 
   return (
@@ -81,22 +87,45 @@ export default function Navbar() {
         <Logo>
           <img src={logo} alt="ChainHive.ai Logo" />
           <Typography variant="h6" component="div">
-            ChainHive.ai
+            vinely.ai
           </Typography>
         </Logo>
         <List>
           {drawerItems.map((item) => (
             <ListItemButton
               key={item.text}
-              sx={{ color: "white", "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" } }}
+              sx={{
+                color: "white",
+                "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
+                fontWeight: selectedTab === item.text ? 'bold' : 'normal', // Bold for selected tab
+              }}
               component="a"
               href={item.link || "#"}
+              onClick={() => handleTabClick(item.text)} // Set selected tab on click
             >
               <ListItemIcon sx={{ color: "white", minWidth: 40 }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           ))}
         </List>
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: 16,
+            left: 16,
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            color: "white",
+          }}
+        >
+          <Avatar
+            alt="Maurya Samanta"
+            src="https://via.placeholder.com/40" // Replace with the actual avatar URL
+            sx={{ width: 40, height: 40 }}
+          />
+          <Typography variant="body2" sx={{display:'flex', alignItems:'center', justifyContent:'center'}}>Maurya Samanta</Typography>
+        </Box>
       </StyledDrawer>
     </>
   )
