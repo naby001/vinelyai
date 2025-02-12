@@ -119,7 +119,7 @@ export default function SearchInterface() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-         {searchResults.length > 0 && (
+         {searchResults?.length > 0 && (
   <Typography
     variant="body2"
     sx={{
