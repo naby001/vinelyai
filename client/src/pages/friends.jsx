@@ -60,8 +60,8 @@ export default function FriendsInterface() {
   return (
     <Box sx={{ display: "flex", height: "100%", backgroundColor: "#121212", p: 3 }}>
       <Navbar />
-      <Box sx={{ flexGrow: 1, maxWidth: 800, margin: "0 auto", p: 3, color: "white" }}>
-        <Typography variant="h5" sx={{ mb: 1 }}>
+      <Box sx={{ flexGrow: 1, maxWidth: '70%', margin: "0 auto", p: 3, color: "white", }}>
+        <Typography variant="h5" sx={{ mb: 1, fontSize:40 }}>
           Friends
         </Typography>
         <Typography variant="body2" sx={{ mb: 3, color: "rgba(255,255,255,0.7)" }}>
@@ -69,7 +69,7 @@ export default function FriendsInterface() {
         </Typography>
 
         <StyledPaper>
-          <Typography variant="h6" sx={{ mb: 2 }}>
+          <Typography variant="h6" sx={{ mb: 2, color:'white' }}>
             Invite Friends
           </Typography>
           <Typography variant="body2" sx={{ mb: 2, color: "rgba(255,255,255,0.7)" }}>

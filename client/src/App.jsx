@@ -32,7 +32,7 @@ const App = () => {
     }
   });
   const isSmallScreen = useMediaQuery('(max-width: 768px)'); // Media query for phones and tablets
- 
+  const user=useSelector((state)=>state.user);
   return (
     <BrowserRouter>
     <ThemeProvider theme={theme}>
@@ -40,7 +40,7 @@ const App = () => {
      <CssBaseline />
 
       <Routes>
-      <Route path="/" element={<AuthPage/>} />
+      <Route path="/" element={!user?<AuthPage/>:<SearchInterface/>} />
       <Route path="/search" element={<SearchInterface />} />
       <Route path="/friends" element={<FriendsInterface />} />
       <Route path="/connections" element={<ConnectionsInterface />} />

@@ -13,20 +13,60 @@ import {
 } from '@mui/material';
 import Google from '@mui/icons-material/Google';
 import logo from "../assets/comet.png"
-
+import {useDispatch} from 'react-redux';
+import { setLogin } from '../state';
+import {useNavigate} from 'react-router-dom';
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
-  const handleSubmit = (e) => {
+  const [first,setfirst]=useState('');
+  const [last,setlast]=useState('');
+  const [pass,setpass]=useState('');
+  const [email,setemail]=useState('');
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate auth process
-    setTimeout(() => setIsLoading(false), 2000);
+    try {
+      if(isLogin){
+        const data={email:email, password:pass};
+        console.log(data);
+        const response=await fetch('http://localhost:3000/user/login',{
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify(data),
+          method:'POST'
+        });
+        const returneddata=await response.json();
+        setIsLoading(false);
+        dispatch(setLogin({
+          user:returneddata.user,
+          token:returneddata.token
+        }));
+        navigate('/search');
+      }
+      else
+      {
+        const data={firstName:first, lastName:last,email:email, password:pass};
+        const response=await fetch('http://localhost:3000/user/signup',{
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify(data),
+          method:'POST'
+        });
+        const returneddata=await response.json();
+        setIsLoading(false);
+        dispatch(setLogin({
+          user:returneddata.user,
+          token:returneddata.token
+        }));
+        navigate('/search');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-
   return (
     <Box 
       sx={{
@@ -93,6 +133,7 @@ const AuthPage = () => {
                       placeholder="Enter your email" 
                       variant="outlined" 
                       sx={{ mb: 2 }} 
+                      onChange={(e)=>{setemail(e.target.value)}}
                     />
                   </Box>
                   <Box sx={{ mb: 2 }}>
@@ -101,7 +142,8 @@ const AuthPage = () => {
                       fullWidth 
                       placeholder="Enter your password" 
                       type="password" 
-                      variant="outlined" 
+                      variant="outlined"
+                      onChange={(e)=>{setpass(e.target.value)}} 
                     />
                   </Box>
                 </motion.div>
@@ -124,6 +166,7 @@ const AuthPage = () => {
                         fullWidth 
                         placeholder="First name" 
                         variant="outlined" 
+                        onChange={(e)=>{setfirst(e.target.value)}} 
                       />
                     </Box>
                     <Box sx={{ flex: 1 }}>
@@ -132,6 +175,7 @@ const AuthPage = () => {
                         fullWidth 
                         placeholder="Last name" 
                         variant="outlined" 
+                        onChange={(e)=>{setlast(e.target.value)}} 
                       />
                     </Box>
                   </Box>
@@ -141,7 +185,8 @@ const AuthPage = () => {
                       fullWidth 
                       placeholder="Enter your email" 
                       variant="outlined" 
-                      sx={{ mb: 2 }} 
+                      sx={{ mb: 2 }}
+                      onChange={(e)=>{setemail(e.target.value)}}  
                     />
                   </Box>
                   <Box sx={{ mb: 2 }}>
@@ -151,6 +196,7 @@ const AuthPage = () => {
                       placeholder="Create a strong password" 
                       type="password" 
                       variant="outlined" 
+                      onChange={(e)=>{setpass(e.target.value)}} 
                     />
                   </Box>
                 </motion.div>

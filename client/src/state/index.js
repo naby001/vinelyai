@@ -18,12 +18,7 @@ export const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
     },
-    setGithubLogin: (state, action) => {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.githubtoken=action.payload.githubtoken;
-      state.preferences=action.payload.preferences;
-    },
+  
     setLogout: (state) => {
       state.user = null;
       state.token = null;
@@ -50,6 +45,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setMode, setLogin,setGithubLogin, setLogout, setFriends, setPosts, setPost } =
+export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } =
   authSlice.actions;
 export default authSlice.reducer;
